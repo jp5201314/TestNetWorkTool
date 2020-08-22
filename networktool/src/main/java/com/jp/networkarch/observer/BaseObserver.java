@@ -13,6 +13,8 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onSubscribe(Disposable d) {
+        //抛出disposable在外部   Activity的OnDestroy中处理
+        //可在BaseActivity中定义CompositeDisposable装载然后在BaseActivity的OnDestroy中处理dispose
         addDisposable(d);
     }
 

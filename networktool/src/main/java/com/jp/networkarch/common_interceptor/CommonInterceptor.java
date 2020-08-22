@@ -30,7 +30,7 @@ import okio.BufferedSource;
  * @ProjectName : NetWorkArchTools
  * @Author : Jason
  * @Time : 2020/8/22 12:45
- * @Description : 文件描述
+ * @Description : 公有的拦截器
  */
 public class CommonInterceptor implements Interceptor {
     private INetworkRequireInfo iNetworkRequireInfo;

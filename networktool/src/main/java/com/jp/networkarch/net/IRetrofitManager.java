@@ -82,17 +82,13 @@ public abstract class IRetrofitManager implements IRuntimeEnvironment{
      * @return
      */
     public   <T> ObservableTransformer<T, T> applySchedulers(Observer<T> observer) {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                Observable<T> observable = (Observable<T>)
-                        upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .map(getAppErrorHandle())
-                        .onErrorResumeNext(new HttpErrorHandler<T>());
-                observable.subscribe(observer);
-                return observable;
-            }
+        return upstream -> {
+            Observable<T> observable = upstream.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(getAppErrorHandle())
+            .onErrorResumeNext(new HttpErrorHandler<T>());
+            observable.subscribe(observer);
+            return observable;
         };
     }
 
