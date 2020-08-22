@@ -16,10 +16,15 @@ import retrofit2.http.Query;
  * @Description : 文件描述
  */
 public interface TencentApiService {
-
-
+    /**
+     * 聚合数据中的菜谱 https://www.juhe.cn/box
+     * @param id
+     * @param dtype
+     * @param key
+     * @return
+     */
     @GET("/cook/queryid")
-    @ResponseConverter(format = ConverterFormat.XML)
+    @ResponseConverter(format = ConverterFormat.JSON)
     Observable<CookBean> getCook(@Query("id") int id,
                                  @Query("dtype") String dtype,
                                  @Query("key") String key);

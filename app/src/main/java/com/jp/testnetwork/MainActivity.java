@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TencentRetrofitManager.getService(TencentApiService.class)
-                .getCook(1,"xml","a4f9bccd568918677dbd43f2f268d0f5")
+                .getCook(1,"json","a4f9bccd568918677dbd43f2f268d0f5")
                 .compose(TencentRetrofitManager.getInstance()
         .applySchedulers(new BaseObserver<CookBean>() {
             @Override
